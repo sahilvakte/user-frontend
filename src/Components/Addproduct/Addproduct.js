@@ -47,17 +47,17 @@ const Addproduct = () => {
       <div>
         <label>Price</label>
         <input
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
         />
       </div>
       <div>
         <label>Category</label>
         <input
           type="text"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         />
       </div>
       <button onClick={addproduct}>Add Product</button>
