@@ -4,7 +4,9 @@ import Signup from "./Components/Signup/Signup";
 import Login from "./Components/Login/Login";
 import Addproduct from "./Components/Addproduct/Addproduct";
 import Showproduct from "./Components/Showproduct/Showproduct";
-import ManualOrder from "./Components/ManualOrder/ManualOrder";
+import SearchProduct from "./Components/SearchProduct/SearchProduct";
+import ManualCustomer from "./Components/ManualCustomer/ManualCustomer";
+import SearchCustomer from "./Components/SearchCustomer/SearchCustomer";
 
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
       {/* <Login/> */}
       {/* <Addproduct/> */}
       {/* <Showproduct/> */}
-      <ManualOrder/>
+      {/* <SearchProduct/> */}
+      <ManualCustomer/>
+      {/* <SearchCustomer/> */}
     </div>
   );
 }

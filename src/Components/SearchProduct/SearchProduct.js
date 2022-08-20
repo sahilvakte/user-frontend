@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function ManualOrder() {
+function SearchProduct() {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [orderproduct, setOrderproduct] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
 
   useEffect(() => {
@@ -17,6 +18,8 @@ function ManualOrder() {
     };
     loadPosts();
   }, []);
+
+  console.log("orderproduct", orderproduct);
 
   return (
     <div>
@@ -41,10 +44,34 @@ function ManualOrder() {
               return value;
             }
           })
-          .map((item) => <h5 key={item.id}>{item.name}</h5>)
+          .map((item) => (
+            <h5
+              onClick={() => {
+                setOrderproduct([...orderproduct, item]);
+              }}
+              key={item.id}
+            >
+              {item.name}
+            </h5>
+          ))
       )}
+
+      <div>
+        Selected Product For Order
+        {orderproduct &&
+          orderproduct.length > 0 &&
+          orderproduct.map((item) => (
+            <h5 key={item.id}>
+              Name :{item.name}
+              <br />
+              Price : {item.price}
+              <br /> Description : {item.desc}
+              <br /> Category :{item.category}
+            </h5>
+          ))}
+      </div>
     </div>
   );
 }
 
-export default ManualOrder;
+export default SearchProduct;
