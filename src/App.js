@@ -3,7 +3,7 @@ import "./App.css";
 import Signup from "./Components/Signup/Signup";
 import Login from "./Components/Login/Login";
 import Addproduct from "./Components/Addproduct/Addproduct";
-import FetchAPI from "./Components/Showproduct/FetchAPI";
+import Showproduct from "./Components/Showproduct/Showproduct";
 
 
 function App() {
@@ -14,8 +14,7 @@ function App() {
       {/* <Signup/> */}
       {/* <Login/> */}
       {/* <Addproduct/> */}
-      {/* <Showproduct  /> */}
-      <FetchAPI/>
+      <Showproduct/>
     </div>
   );
 }

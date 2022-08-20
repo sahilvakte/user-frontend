@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function FetchAPI() {
+function Showproduct() {
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/prodapi/showproduct").then((result) => {
@@ -36,4 +36,4 @@ function FetchAPI() {
   );
 }
 
-export default FetchAPI;
+export default Showproduct;
