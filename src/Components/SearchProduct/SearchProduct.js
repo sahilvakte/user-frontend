@@ -19,14 +19,22 @@ function SearchProduct() {
     loadPosts();
   }, []);
 
-  console.log("orderproduct", orderproduct);
+  const onProductClick = (product) => {
+    let found = orderproduct.some((ele) => ele._id === product._id);
+
+    if (found) {
+      return alert("Product Already Exists");
+    } else {
+      return setOrderproduct([...orderproduct, product]);
+    }
+  };
 
   return (
     <div>
-      <h3>Search Bar</h3>
+      <h3>Search Product</h3>
       <input
         type="text"
-        placeholder="search...."
+        placeholder="Search Product"
         onChange={(e) => setSearchTitle(e.target.value)}
       />
       {loading ? (
@@ -47,7 +55,7 @@ function SearchProduct() {
           .map((item) => (
             <h5
               onClick={() => {
-                setOrderproduct([...orderproduct, item]);
+                onProductClick(item);
               }}
               key={item.id}
             >

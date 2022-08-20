@@ -7,6 +7,7 @@ import Showproduct from "./Components/Showproduct/Showproduct";
 import SearchProduct from "./Components/SearchProduct/SearchProduct";
 import ManualCustomer from "./Components/ManualCustomer/ManualCustomer";
 import SearchCustomer from "./Components/SearchCustomer/SearchCustomer";
+import ManualOrder from "./Container/ManualOrder/ManualOrder";
 
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
       {/* <Addproduct/> */}
       {/* <Showproduct/> */}
       {/* <SearchProduct/> */}
-      <ManualCustomer/>
+      {/* <ManualCustomer/> */}
       {/* <SearchCustomer/> */}
+      <ManualOrder/>
     </div>
   );
 }

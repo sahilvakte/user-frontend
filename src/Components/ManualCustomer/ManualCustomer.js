@@ -32,8 +32,9 @@ const ManualCustomer = () => {
 
   return (
     <div>
+      <h3>Add New Customer</h3>
         <div>
-        <label>First Name</label>
+        <label>First Name :  </label>
         <input
           type="text"
           value={firstname}
@@ -41,7 +42,7 @@ const ManualCustomer = () => {
         />
       </div>
         <div>
-        <label>Last Name</label>
+        <label>Last Name :  </label>
         <input
           type="text"
           value={lastname}
@@ -49,7 +50,7 @@ const ManualCustomer = () => {
         />
       </div>
         <div>
-        <label>Customer Email</label>
+        <label>Customer Email :  </label>
         <input
           type="text"
           value={customeremail}
@@ -57,7 +58,7 @@ const ManualCustomer = () => {
         />
       </div>
         <div>
-        <label>Customer Phone</label>
+        <label>Customer Phone :  </label>
         <input
           type="text"
           value={customerphone}
@@ -65,7 +66,7 @@ const ManualCustomer = () => {
         />
       </div>
         <div>
-        <label>Customer Address</label>
+        <label>Customer Address :  </label>
         <input
           type="text"
           value={customeraddress}

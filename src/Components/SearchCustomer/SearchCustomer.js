@@ -19,12 +19,22 @@ function SearchCustomer() {
     loadPosts();
   }, []);
 
+  const onCustomerClick = (customer) => {
+    let found = addcustomer.some((ele) => ele._id === customer._id);
+
+    if (found) {
+      return alert("This Customer Already Exists");
+    } else {
+      return setAddcustomer([...addcustomer, customer]);
+    }
+  };
+
   return (
     <div>
-      <h3>Search Bar</h3>
+      <h3>Search Customer</h3>
       <input
         type="text"
-        placeholder="search...."
+        placeholder="Search Customer"
         onChange={(e) => setSearchTitle(e.target.value)}
       />
       {loading ? (
@@ -45,7 +55,7 @@ function SearchCustomer() {
           .map((item) => (
             <h5
               onClick={() => {
-                setAddcustomer([...addcustomer, item]);
+                onCustomerClick(item);
               }}
               key={item.id}
             >
