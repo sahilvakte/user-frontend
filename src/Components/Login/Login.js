@@ -17,7 +17,10 @@ const Login = () => {
         password: password,
       })
       .then((res) => {
+
         console.log("res", res);
+        const {token} = res.data
+        localStorage.setItem("SavedToken", token);
       })
       .catch((err) => {
         console.log("err", err);

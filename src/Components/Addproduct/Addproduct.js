@@ -17,6 +17,7 @@ const Addproduct = () => {
         desc: desc,
         category: category,
         price: price,
+        token:localStorage.getItem('SavedToken')
       })
       .then((res) => {
         console.log("res", res);
