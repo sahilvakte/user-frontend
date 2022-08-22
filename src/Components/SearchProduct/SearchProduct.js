@@ -35,9 +35,7 @@ function SearchProduct() {
   const onIncrement = (item, index) => {
     // console.log("index", index);
     let newArr = [...orderproduct];
-    newArr[index].qty = newArr[index].qty
-      ? newArr[index].qty + 1
-      : 2;
+    newArr[index].qty = newArr[index].qty ? newArr[index].qty + 1 : 2;
     setOrderproduct(newArr);
     // console.log("orderproduct", newArr);
   };
@@ -45,12 +43,22 @@ function SearchProduct() {
   const onDecrement = (item, index) => {
     // console.log("index", index);
     let newArr = [...orderproduct];
-    newArr[index].qty = newArr[index].qty
-      ? newArr[index].qty - 1
-      : 0;
+    newArr[index].qty = newArr[index].qty ? newArr[index].qty - 1 : 0;
     setOrderproduct(newArr);
     // console.log("orderproduct", newArr);
   };
+
+  // // Price Updates
+
+  // const updatePrice = (item, index) => {
+  //   // console.log("index", index);
+  //   let newArr = [...orderproduct];
+  //   newArr[index].price = newArr[index].price
+  //     ? newArr[index].price * item.qty
+  //     : 0;
+  //   setOrderproduct(newArr);
+  //   // console.log("orderproduct", newArr);
+  // };
 
   return (
     <div>
@@ -106,6 +114,9 @@ function SearchProduct() {
                 <div>
                   <button onClick={() => onIncrement(item, index)}>+</button>
                 </div>
+              </div>
+              <div>
+                Total Price :  {item.qty ? item.price * item.qty : item.price}
               </div>
             </h5>
           ))}
