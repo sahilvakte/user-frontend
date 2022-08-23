@@ -26,9 +26,9 @@ function App() {
     //   <ManualOrder/>
     // </div>
     <Routes>
-      <Route path="/" element={<ManualOrder/>}/>
+      <Route path="morder" element={<ManualOrder/>}/>
       <Route path="signup" element={<Signup/>}/>
-      <Route path="login" element={<Login/>}/>
+      <Route path="/" element={<Login/>}/>
       <Route path="addproduct" element={<Addproduct/>}/>
       <Route path="showproduct" element={<Showproduct/>}/>
       <Route path="searchProduct" element={<SearchProduct/>}/>

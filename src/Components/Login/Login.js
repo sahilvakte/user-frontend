@@ -1,5 +1,6 @@
 import React from "react";
 import "../Login/Login.css";
+import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import axios from "axios";
@@ -17,9 +18,8 @@ const Login = () => {
         password: password,
       })
       .then((res) => {
-
         console.log("res", res);
-        const {token} = res.data
+        const { token } = res.data;
         localStorage.setItem("SavedToken", token);
       })
       .catch((err) => {
@@ -48,8 +48,9 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
-          <button onClick={login}>Login</button>
+          <Link to="/morder">
+            <button onClick={login}>Login</button>
+          </Link>
         </div>
       </div>
     </div>

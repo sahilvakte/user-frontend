@@ -147,10 +147,11 @@ const ManualOrder = () => {
       customeraddress: addcustomer.customeraddress,
       orderitem: orderproduct,
       totalamount: totalamount,
-      token: localStorage.getItem("SavedToken"),
       customerid: addcustomer._id,
+      // token: localStorage.getItem("SavedToken")
     };
     axios.post("http://localhost:5000/orderapi/addorder", form);
+    return alert("Product Added Successfully")
   };
 
   return (
