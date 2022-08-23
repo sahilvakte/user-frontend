@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function SearchCustomer() {
-  const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [customerloading, setCustomerloading] = useState(false);
+  const [customerposts, setCustomerposts] = useState([]);
   const [addcustomer, setAddcustomer] = useState([]);
-  const [searchTitle, setSearchTitle] = useState("");
+  const [searchInCustomer, setSearchInCustomer] = useState("");
+  
 
   useEffect(() => {
-    const loadPosts = async () => {
-      setLoading(true);
+    const loadCustomerposts = async () => {
+      setCustomerloading(true);
       const response = await axios.get(
         "http://localhost:5000/customerapi/showcustomer"
       );
-      await setPosts(response.data.response);
-      await setLoading(false);
+      await setCustomerposts(response.data.response);
+      await setCustomerloading(false);
     };
-    loadPosts();
+    loadCustomerposts();
   }, []);
 
   const onCustomerClick = (customer) => {
@@ -35,19 +36,19 @@ function SearchCustomer() {
       <input
         type="text"
         placeholder="Search Customer"
-        onChange={(e) => setSearchTitle(e.target.value)}
+        onChange={(e) => setSearchInCustomer(e.target.value)}
       />
-      {loading ? (
-        <h4>Loading....</h4>
+      {customerloading ? (
+        <h4>Customer Loading....</h4>
       ) : (
-        posts &&
-        posts.length > 0 &&
-        posts
+        customerposts &&
+        customerposts.length > 0 &&
+        customerposts
           .filter((value) => {
-            if (searchTitle === "") {
+            if (searchInCustomer === "") {
               return value;
             } else if (
-              value.firstname.toLowerCase().includes(searchTitle.toLowerCase())
+              value.firstname.toLowerCase().includes(searchInCustomer.toLowerCase())
             ) {
               return value;
             }

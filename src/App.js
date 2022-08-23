@@ -8,22 +8,33 @@ import SearchProduct from "./Components/SearchProduct/SearchProduct";
 import ManualCustomer from "./Components/ManualCustomer/ManualCustomer";
 import SearchCustomer from "./Components/SearchCustomer/SearchCustomer";
 import ManualOrder from "./Container/ManualOrder/ManualOrder";
+import {  Routes, Route } from "react-router-dom";
 
 
 function App() {
 
 
   return (
-    <div>
-      {/* <Signup/> */}
-      {/* <Login/> */}
-      {/* <Addproduct/> */}
-      {/* <Showproduct/> */}
-      {/* <SearchProduct/> */}
-      {/* <ManualCustomer/> */}
-      {/* <SearchCustomer/> */}
-      <ManualOrder/>
-    </div>
+    // <div>
+    //   {/* <Signup/> */}
+    //   {/* <Login/> */}
+    //   {/* <Addproduct/> */}
+    //   {/* <Showproduct/> */}
+    //   {/* <SearchProduct/> */}
+    //   {/* <ManualCustomer/> */}
+    //   {/* <SearchCustomer/> */}
+    //   <ManualOrder/>
+    // </div>
+    <Routes>
+      <Route path="/" element={<ManualOrder/>}/>
+      <Route path="signup" element={<Signup/>}/>
+      <Route path="login" element={<Login/>}/>
+      <Route path="addproduct" element={<Addproduct/>}/>
+      <Route path="showproduct" element={<Showproduct/>}/>
+      <Route path="searchProduct" element={<SearchProduct/>}/>
+      <Route path="manualCustomer" element={<ManualCustomer/>}/>
+      <Route path="searchCustomer" element={<SearchCustomer/>}/>
+    </Routes>
   );
 }
 

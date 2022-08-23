@@ -43,22 +43,21 @@ function SearchProduct() {
   const onDecrement = (item, index) => {
     // console.log("index", index);
     let newArr = [...orderproduct];
-    newArr[index].qty = newArr[index].qty ? newArr[index].qty - 1 : 0;
-    setOrderproduct(newArr);
+    if (newArr[index].qty === 1) {
+      return setOrderproduct(newArr.filter((val,i)=> i !== index ))
+    } else {
+      newArr[index].qty = newArr[index].qty ? newArr[index].qty - 1 : 0;
+      return setOrderproduct(newArr);
+    }
+
     // console.log("orderproduct", newArr);
   };
 
-  // // Price Updates
+  const asd = orderproduct.reduce(function (previousValue, currentValue) {
+    return previousValue + currentValue.qty * currentValue.price;
+  }, 0);
 
-  // const updatePrice = (item, index) => {
-  //   // console.log("index", index);
-  //   let newArr = [...orderproduct];
-  //   newArr[index].price = newArr[index].price
-  //     ? newArr[index].price * item.qty
-  //     : 0;
-  //   setOrderproduct(newArr);
-  //   // console.log("orderproduct", newArr);
-  // };
+  console.log("asd", asd, orderproduct);
 
   return (
     <div>
@@ -116,10 +115,11 @@ function SearchProduct() {
                 </div>
               </div>
               <div>
-                Total Price :  {item.qty ? item.price * item.qty : item.price}
+                Total Price : {item.qty ? item.price * item.qty : item.price}
               </div>
             </h5>
           ))}
+        <div></div>
       </div>
     </div>
   );
