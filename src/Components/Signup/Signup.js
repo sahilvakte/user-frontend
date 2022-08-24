@@ -18,7 +18,7 @@ const Signup = () => {
     return /\S+@\S+\.\S+/.test(email);
   };
 
-  const asd = async (e) => {
+  const register = async (e) => {
     e.preventDefault();
 
     if (
@@ -138,7 +138,7 @@ const Signup = () => {
               : null}
           </div>
 
-          <button onClick={asd}>SignUp</button>
+          <button onClick={register}>SignUp</button>
         </div>
         <Link to="/">
           <button>Login</button>

@@ -4,16 +4,14 @@ import "../ManualOrder/ManualOrder.css";
 import { useNavigate } from "react-router";
 
 const ManualOrder = () => {
-
-
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   // const [cname,setCname] = useState('')
 
-  useEffect(() =>{
-    if(!localStorage.getItem('SavedToken')){
-      navigate('/')
+  useEffect(() => {
+    if (!localStorage.getItem("SavedToken")) {
+      navigate("/");
     }
-  },[])
+  }, []);
 
   // SEARCH PRODUCT START
   const [loading, setLoading] = useState(false);
@@ -117,8 +115,44 @@ const ManualOrder = () => {
   const [customerphone, setCustomerphone] = useState("");
   const [customeraddress, setCustomeraddress] = useState("");
 
+  const [validation, setValidation] = useState("");
+  const [showValidation, setShowValidation] = useState(false);
+
+  const isValidEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
   const addcustomermanually = async (e) => {
     e.preventDefault();
+
+    if (
+      firstname === "" ||
+      lastname === "" ||
+      customeremail === "" ||
+      customerphone === "" ||
+      customeraddress === ""
+    ) {
+      return setShowValidation(true);
+    }
+
+    if (firstname === "") {
+      return setShowValidation(true);
+    }
+    if (lastname === "") {
+      return setShowValidation(true);
+    }
+
+    if (!isValidEmail(customeremail)) {
+      return setShowValidation(true);
+    }
+
+    if (customerphone.length = 10) {
+      return setShowValidation(true);
+    }
+
+    if (customeraddress.length < 10) {
+      return setShowValidation(true);
+    }
 
     await axios
       .post(`http://localhost:5000/customerapi/addcustomer`, {
@@ -134,6 +168,13 @@ const ManualOrder = () => {
       .catch((err) => {
         console.log("err", err);
       });
+  };
+  const showErrorMessage = (msg) => {
+    return (
+      <>
+        <div>{msg}</div>
+      </>
+    );
   };
 
   // MANUALLY CUSTOMER ADDING END
@@ -317,6 +358,9 @@ const ManualOrder = () => {
                 value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}
               />
+              {showValidation && firstname.length < 5
+                ? showErrorMessage("Customer First Name is Required ...!")
+                : null}
             </div>
             <div>
               <label>Last Name : </label>
@@ -325,6 +369,9 @@ const ManualOrder = () => {
                 value={lastname}
                 onChange={(e) => setLastname(e.target.value)}
               />
+              {showValidation && lastname.length < 5
+                ? showErrorMessage("Customer Last Name is Required ...!")
+                : null}
             </div>
             <div>
               <label>Customer Email : </label>
@@ -333,14 +380,20 @@ const ManualOrder = () => {
                 value={customeremail}
                 onChange={(e) => setCustomeremail(e.target.value)}
               />
+              {showValidation && !isValidEmail(customeremail)
+                ? showErrorMessage("Invalid Email")
+                : null}
             </div>
             <div>
               <label>Customer Phone : </label>
               <input
-                type="text"
+                type="number"
                 value={customerphone}
                 onChange={(e) => setCustomerphone(e.target.value)}
               />
+              {showValidation && customerphone.length < 5
+                ? showErrorMessage("Customer Contact is Required")
+                : null}
             </div>
             <div>
               <label>Customer Address : </label>
@@ -349,6 +402,9 @@ const ManualOrder = () => {
                 value={customeraddress}
                 onChange={(e) => setCustomeraddress(e.target.value)}
               />
+              {showValidation && customeraddress.length < 5
+                ? showErrorMessage("Length should be greater than 5")
+                : null}
             </div>
 
             <button onClick={addcustomermanually}>Add Customer Manually</button>

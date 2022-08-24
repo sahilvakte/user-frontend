@@ -10,10 +10,27 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const [validation, setValidation] = useState("");
+  const [showValidation, setShowValidation] = useState(false);
+
+  // const isValidEmail = (email) => {
+  //   return /\S+@\S+\.\S+/.test(email);
+  // };
+
   const login = async (e) => {
     e.preventDefault();
-    navigate("/morder");
 
+    if (username === "" || password === "") {
+      return setShowValidation(true);
+    }
+
+    if (username !== username) {
+      return setShowValidation(true);
+    }
+    // if (password.length < 5) {
+    //   return setShowValidation(true);
+    // }
+      navigate("/morder");
 
     await axios
       .post(`http://localhost:5000/api/login`, {
@@ -30,6 +47,14 @@ const Login = () => {
       });
   };
 
+  const showErrorMessage = (msg) => {
+    return (
+      <>
+        <div>{msg}</div>
+      </>
+    );
+  };
+
   return (
     <div>
       <div className="user-login-container">
@@ -41,6 +66,9 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
+            {showValidation && username === username
+              ? showErrorMessage("Incorrect Email ID")
+              : null}
           </div>
 
           <div>
@@ -50,10 +78,13 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {showValidation && password === password
+              ? showErrorMessage("Incorrect Password")
+              : null}
           </div>
-          <Link to="/morder">
-            <button onClick={login}>Login</button>
-          </Link>
+          {/* <Link to="/morder"> */}
+          <button onClick={login}>Login</button>
+          {/* </Link> */}
         </div>
         <Link to="/signup">
           <button>Signup</button>
