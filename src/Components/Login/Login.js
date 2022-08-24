@@ -1,7 +1,9 @@
 import React from "react";
 import "../Login/Login.css";
-import { Link, useNavigate } from "react-router-dom";
 
+import { GoogleLogin } from "react-google-login";
+
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -30,7 +32,7 @@ const Login = () => {
     // if (password.length < 5) {
     //   return setShowValidation(true);
     // }
-      navigate("/morder");
+    navigate("/morder");
 
     await axios
       .post(`http://localhost:5000/api/login`, {
@@ -53,6 +55,14 @@ const Login = () => {
         <div>{msg}</div>
       </>
     );
+  };
+
+  const responseSuccessGoogle = (response) => {
+    console.log(response);
+  };
+  const responseErrorGoogle = (error) => {
+    console.log(error);
+    // console.log("Google sign in was Unsuccessful. Try Again Later....");
   };
 
   return (
@@ -89,6 +99,35 @@ const Login = () => {
         <Link to="/signup">
           <button>Signup</button>
         </Link>
+        <div>
+          {/* <GoogleLogin
+            clientId="591052136807-l08ouoh5rghgv2re1mm42dba5a2ct7e5.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <button
+                // className={classes.googleButton}
+                color="primary"
+                fullwidth
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                // startIcon={<Icon />}
+                varient="contained"
+              >
+                {" "}
+                Google Sign In{" "}
+              </button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy="single_host_origin"
+          /> */}
+          <GoogleLogin
+            clientId="591052136807-l08ouoh5rghgv2re1mm42dba5a2ct7e5.apps.googleusercontent.com"
+            buttonText="Login With Google"
+            onSuccess={responseSuccessGoogle}
+            onFailure={responseErrorGoogle}
+            cookiePolicy={"single_host_origin"}
+          />
+        </div>
       </div>
     </div>
   );
