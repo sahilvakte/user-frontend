@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../ManualOrder/ManualOrder.css";
+import { useNavigate } from "react-router";
 
 const ManualOrder = () => {
+
+
+  const navigate=useNavigate()
+  // const [cname,setCname] = useState('')
+
+  useEffect(() =>{
+    if(!localStorage.getItem('SavedToken')){
+      navigate('/')
+    }
+  },[])
+
   // SEARCH PRODUCT START
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -51,7 +63,7 @@ const ManualOrder = () => {
     // console.log("index", index);
     let newArr = [...orderproduct];
     if (newArr[index].qty === 1) {
-      return setOrderproduct(newArr.filter((val,i)=> i !== index ))
+      return setOrderproduct(newArr.filter((val, i) => i !== index));
     } else {
       newArr[index].qty = newArr[index].qty ? newArr[index].qty - 1 : 0;
       return setOrderproduct(newArr);
@@ -151,7 +163,7 @@ const ManualOrder = () => {
       // token: localStorage.getItem("SavedToken")
     };
     axios.post("http://localhost:5000/orderapi/addorder", form);
-    return alert("Product Added Successfully")
+    return alert("Product Added Successfully");
   };
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import "../Login/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import axios from "axios";
@@ -8,9 +8,12 @@ import axios from "axios";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault();
+    navigate("/morder");
+
 
     await axios
       .post(`http://localhost:5000/api/login`, {
@@ -52,6 +55,9 @@ const Login = () => {
             <button onClick={login}>Login</button>
           </Link>
         </div>
+        <Link to="/signup">
+          <button>Signup</button>
+        </Link>
       </div>
     </div>
   );

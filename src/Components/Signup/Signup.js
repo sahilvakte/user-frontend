@@ -1,6 +1,6 @@
 import React from "react";
 import "../Signup/Signup.css";
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -140,6 +140,9 @@ const Signup = () => {
 
           <button onClick={asd}>SignUp</button>
         </div>
+        <Link to="/">
+          <button>Login</button>
+        </Link>
       </div>
     </div>
   );
